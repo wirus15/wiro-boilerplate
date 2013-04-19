@@ -1,0 +1,21 @@
+allow from all
+
+Options +FollowSymLinks
+Options -Indexes
+IndexIgnore */*
+RewriteEngine On
+
+RewriteRule ^$ front/index.php
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/(.*)$ admin/$1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/.* admin/www/index.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ front/$1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ front/www/index.php [L]
+
